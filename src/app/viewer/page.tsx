@@ -34,6 +34,7 @@ export default function ViewerPage() {
             width={40}
             height={40}
             className="rounded-full"
+            unoptimized
           />
           <h2 className="text-xl font-semibold">Hello, {username}!</h2>
         </div>
