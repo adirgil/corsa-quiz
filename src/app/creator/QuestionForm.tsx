@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from "@/context/QuizContext";
 import { useRandomQuestion } from "@/hooks/useRandomQuestion";
-import { toast } from "sonner";
+import { toastError, toastSuccess } from "@/lib/toast";
 
 export default function QuestionForm() {
   const [text, setText] = useState("");
@@ -15,7 +15,7 @@ export default function QuestionForm() {
 
   const handleAdd = () => {
     if (!text.trim()) {
-      toast.error("Question text is required");
+      toastError("Question text is required");
       return;
     }
 
@@ -23,7 +23,7 @@ export default function QuestionForm() {
     addQuestion({ id, text, imageUrl });
     setText("");
     setImageUrl("");
-    toast("Question added!");
+    toastSuccess("Question added!", "You can now view it in the quiz.");
   };
 
   const handleFetchRandom = async () => {
@@ -32,10 +32,10 @@ export default function QuestionForm() {
       if (question) {
         setText(question.text);
         setImageUrl(question.imageUrl);
-        toast("Random question fetched!");
+        toastSuccess("Random question fetched!", "You can now edit it.");
       }
     } catch {
-      toast.error("Failed to fetch question");
+      toastError("Failed to fetch random question");
     }
   };
 

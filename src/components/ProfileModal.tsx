@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProfile } from "@/store/userProfileSlice";
 import { RootState } from "@/store/store";
-import { toast } from "sonner";
+import { toastSuccess } from "@/lib/toast";
 
 export default function ProfileModal({
   trigger,
@@ -37,7 +37,7 @@ export default function ProfileModal({
 
   const handleSave = () => {
     dispatch(setProfile({ username: name, profileImageUrl: image }));
-    toast("Profile updated!");
+    toastSuccess("Profile updated");
     setOpen(false);
   };
 

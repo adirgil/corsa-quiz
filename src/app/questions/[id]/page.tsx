@@ -1,36 +1,37 @@
 "use client";
 
 import { useQuiz } from "@/context/QuizContext";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
-interface Props {
-  params: { id: string };
-}
-
-export default function QuestionPage({ params }: Props) {
-  const { id } = params;
+export default function QuestionPage() {
+  const { id } = useParams();
   const { questions } = useQuiz();
+  const router = useRouter();
 
   const question = questions.find((q) => q.id === id);
 
   if (!question) {
-    notFound();
+    return <div className="text-red-500">Question not found.</div>;
   }
 
   return (
     <div className="max-w-lg mx-auto space-y-4">
-      <h1 className="text-2xl font-bold">Question ID: {question.id}</h1>
+      <Button variant="outline" onClick={() => router.push("/viewer")}>
+        ← Back to Quiz List
+      </Button>
+
       <p className="text-lg">{question.text}</p>
+
       {question.imageUrl && (
         <Image
           src={question.imageUrl}
           alt="Question"
-          className="rounded-md max-w-full"
+          width={600}
+          height={400}
+          className="rounded-md"
           unoptimized
-          width={500}
-          height={300}
-          loading="lazy"
         />
       )}
     </div>
