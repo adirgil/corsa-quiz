@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { RootState } from "@/store/store";
 import Image from "next/image";
 import ProfileModal from "./ProfileModal";
-import { usePathname } from "next/navigation"; // ← חדש
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/context/ThemeContext";
 
 export default function Header() {

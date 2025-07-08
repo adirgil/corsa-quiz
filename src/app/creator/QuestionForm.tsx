@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useQuiz } from "@/context/QuizContext";
 import { useRandomQuestion } from "@/hooks/useRandomQuestion";
 import { toastError, toastSuccess } from "@/lib/toast";
+import { Loader2 } from "lucide-react";
 
 export default function QuestionForm() {
   const [text, setText] = useState("");
@@ -60,7 +61,14 @@ export default function QuestionForm() {
           onClick={handleFetchRandom}
           disabled={loading}
         >
-          {loading ? "Loading..." : "Random"}
+          {loading ? (
+            <div className="flex items-center gap-2">
+              <Loader2 className="w-4 h-4 animate-spin" />
+              Loading...
+            </div>
+          ) : (
+            "Random"
+          )}
         </Button>
       </div>
     </div>

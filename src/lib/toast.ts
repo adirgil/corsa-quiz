@@ -7,7 +7,7 @@ export const toastSuccess = (msg: string, desc?: string) =>
     description: desc,
     icon: "✅",
     style: {
-      backgroundColor: "#22c55e", // Green
+      backgroundColor: "#22c55e",
       color: "white",
     },
   });
@@ -17,7 +17,7 @@ export const toastError = (msg: string, desc?: string) =>
     description: desc,
     icon: "❌",
     style: {
-      backgroundColor: "#ef4444", // Red
+      backgroundColor: "#f87171",
       color: "white",
     },
   });
