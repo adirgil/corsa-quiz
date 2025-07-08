@@ -7,6 +7,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import Link from "next/link";
 
 export default function ViewerPage() {
   const { questions } = useQuiz();
@@ -48,7 +49,15 @@ export default function ViewerPage() {
             key={q.id}
             className="border rounded-lg p-4 space-y-2 bg-white shadow-sm"
           >
-            <p className="font-medium">{q.text}</p>
+            <div className="flex items-center justify-between mb-2">
+              <p className="font-medium">{q.text}</p>
+              <Link href={`/questions/${q.id}`}>
+                <Button variant="link" className="text-sm">
+                  View as Page
+                </Button>
+              </Link>
+            </div>
+
             {q.imageUrl && (
               <Image
                 src={q.imageUrl}

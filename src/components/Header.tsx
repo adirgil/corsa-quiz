@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <header className="w-full flex items-center justify-between px-6 py-4 border-b bg-white">
       <div className="text-xl font-bold">
-        Tweed<span className="text-blue-500">Quiz</span>
+        Tweed<span style={{ color: "var(--primary)" }}>Quiz</span>
       </div>
       <Button
         variant="ghost"
