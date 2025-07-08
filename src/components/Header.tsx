@@ -8,11 +8,13 @@ import { RootState } from "@/store/store";
 import Image from "next/image";
 import ProfileModal from "./ProfileModal";
 import { usePathname } from "next/navigation"; // ← חדש
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Header() {
   const { username, profileImageUrl } = useSelector(
     (state: RootState) => state.userProfile
   );
+  const { toggleTheme, theme } = useTheme();
 
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
@@ -22,16 +24,23 @@ export default function Header() {
       <div className="text-xl font-bold">
         Tweed<span className="text-blue-500">Quiz</span>
       </div>
+      <Button
+        variant="ghost"
+        style={{ color: "var(--primary)", border: "1px solid var(--primary)" }}
+        onClick={toggleTheme}
+      >
+        {theme === "blue" ? "Switch to Green" : "Switch to Blue"}
+      </Button>
 
       <nav className="space-x-4">
         <Link href="/creator">
           <Button
             variant="ghost"
-            className={
+            className={`border-b-2 transition-colors ${
               isActive("/creator")
-                ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-600"
-            }
+                ? "text-[var(--primary)] border-[var(--primary)]"
+                : "text-gray-600 border-transparent"
+            }`}
           >
             Create Quiz
           </Button>
@@ -39,11 +48,11 @@ export default function Header() {
         <Link href="/viewer">
           <Button
             variant="ghost"
-            className={
+            className={`border-b-2 transition-colors ${
               isActive("/viewer")
-                ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-600"
-            }
+                ? "text-[var(--primary)] border-[var(--primary)]"
+                : "text-gray-600 border-transparent"
+            }`}
           >
             View Quiz
           </Button>

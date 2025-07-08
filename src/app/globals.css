@@ -120,3 +120,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.theme-blue {
+  --primary: #3b82f6; /* blue-500 */
+}
+
+.theme-green {
+  --primary: #22c55e; /* green-500 */
+}

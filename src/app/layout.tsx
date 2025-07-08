@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "../components/Header";
 import Providers from "../components/Providers";
 import { QuizProvider } from "@/context/QuizContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,12 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Providers>
-          <QuizProvider>
-            <Header />
-            <main className="p-6">{children}</main>
-          </QuizProvider>
-        </Providers>
+        <ThemeProvider>
+          <Providers>
+            <QuizProvider>
+              <Header />
+              <main className="p-6">{children}</main>
+            </QuizProvider>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );

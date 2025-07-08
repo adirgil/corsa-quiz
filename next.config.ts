@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     domains: [
       "via.placeholder.com",
@@ -11,6 +10,7 @@ const nextConfig: NextConfig = {
       "api.dicebear.com",
     ],
   },
+  devIndicators: false,
 };
 
 export default nextConfig;
