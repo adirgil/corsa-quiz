@@ -7,11 +7,15 @@ import { Button } from "@/components/ui/button";
 import { RootState } from "@/store/store";
 import Image from "next/image";
 import ProfileModal from "./ProfileModal";
+import { usePathname } from "next/navigation"; // ← חדש
 
 export default function Header() {
   const { username, profileImageUrl } = useSelector(
     (state: RootState) => state.userProfile
   );
+
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === path;
 
   return (
     <header className="w-full flex items-center justify-between px-6 py-4 border-b bg-white">
@@ -21,10 +25,28 @@ export default function Header() {
 
       <nav className="space-x-4">
         <Link href="/creator">
-          <Button variant="ghost">Create Quiz</Button>
+          <Button
+            variant="ghost"
+            className={
+              isActive("/creator")
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-600"
+            }
+          >
+            Create Quiz
+          </Button>
         </Link>
         <Link href="/viewer">
-          <Button variant="ghost">View Quiz</Button>
+          <Button
+            variant="ghost"
+            className={
+              isActive("/viewer")
+                ? "text-blue-600 border-b-2 border-blue-600"
+                : "text-gray-600"
+            }
+          >
+            View Quiz
+          </Button>
         </Link>
       </nav>
 
