@@ -30,7 +30,10 @@ export default function ViewerPage() {
       {username && (
         <div className="flex items-center gap-4 mb-6">
           <Image
-            src={profileImageUrl || "https://via.placeholder.com/40"}
+            src={
+              profileImageUrl ||
+              "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
+            }
             alt="profile"
             width={40}
             height={40}

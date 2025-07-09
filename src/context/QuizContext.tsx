@@ -36,8 +36,8 @@ export function QuizProvider({ children }: { children: React.ReactNode }) {
     localStorage.setItem("quiz", JSON.stringify(questions));
   }, [questions]);
 
-  const addQuestion = (q: Question) => {
-    setQuestions((prev) => [...prev, q]);
+  const addQuestion = (question: Question) => {
+    setQuestions((prev) => [...prev, question]);
   };
 
   const clearQuestions = () => {
